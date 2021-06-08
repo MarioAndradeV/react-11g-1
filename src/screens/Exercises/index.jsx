@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 export default function Exercises() {
-  const [USD, setUSD] = useState(0);
-  const [MXN, setMXN] = useState(0);
+  const [USD, setUSD] = useState(null);
+  const [MXN, setMXN] = useState(null);
 
   return (
     <div className="container h-100">
@@ -20,10 +20,10 @@ export default function Exercises() {
                   id="USDInput"
                   aria-describedby="emailHelp"
                   placeholder="Enter USD"
-                  value={Number(USD).toFixed(2)}
+                  value={Number(USD)}
                   onChange={(event) => {
                     setUSD(event.target.value);
-                    setMXN(event.target.value * 19.84);
+                    setMXN((event.target.value * 19.84).toFixed(2));
                   }}
                 />
               </div>
@@ -36,9 +36,9 @@ export default function Exercises() {
                   className="form-control"
                   id="MXNInput"
                   placeholder="Enter MXN"
-                  value={Number(MXN).toFixed(2)}
+                  value={Number(MXN)}
                   onChange={({ target: { value } }) => {
-                    setUSD(value / 19.84);
+                    setUSD((value / 19.84).toFixed(2));
                     setMXN(value);
                   }}
                 />
