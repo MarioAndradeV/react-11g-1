@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 
-import "./styles.css";
-
 // export default function Exercises() {
-//   const [USD, setUSD] = useState(0);
-//   const [MXN, setMXN] = useState(0);
+//   const [USD, setUSD] = useState(null);
+//   const [MXN, setMXN] = useState(null);
 
 //   return (
 //     <div className="container h-100">
@@ -22,10 +20,10 @@ import "./styles.css";
 //                   id="USDInput"
 //                   aria-describedby="emailHelp"
 //                   placeholder="Enter USD"
-//                   value={Number(USD).toFixed(2)}
+//                   value={Number(USD)}
 //                   onChange={(event) => {
 //                     setUSD(event.target.value);
-//                     setMXN(event.target.value * 19.84);
+//                     setMXN((event.target.value * 19.84).toFixed(2));
 //                   }}
 //                 />
 //               </div>
@@ -38,9 +36,9 @@ import "./styles.css";
 //                   className="form-control"
 //                   id="MXNInput"
 //                   placeholder="Enter MXN"
-//                   value={Number(MXN).toFixed(2)}
+//                   value={Number(MXN)}
 //                   onChange={({ target: { value } }) => {
-//                     setUSD(value / 19.84);
+//                     setUSD((value / 19.84).toFixed(2));
 //                     setMXN(value);
 //                   }}
 //                 />
@@ -53,66 +51,51 @@ import "./styles.css";
 //   );
 // }
 
-//Ejercicio 2
+const petsData = [
+  {
+    name: "Sr. Peabody",
+    age: "5",
+  },
+  {
+    name: "Misifu",
+    age: "1",
+  },
+  {
+    name: "Solovino",
+    age: "10",
+  },
+  {
+    name: "Nefermishi",
+    age: "5",
+  },
+];
 
 export default function Exercises() {
-  const [NUMBER, setNUMBER] = useState("");
-  const [NAME, setNAME] = useState("");
-  const [VALID_THRU, setVALID_THRU] = useState("");
-  const [CVC, setCVC] = useState("");
-  const [NUMBER2, setNUMBER] = useState("");
-  const [NAME2, setNAME] = useState("");
-  const [VALID_THRU2, setVALID_THRU] = useState("");
-  const [CVC2, setCVC] = useState("");
+  const buildLIPets = ({ name, age }, index) => (
+    <li key={index} className="list-group-item">
+      Name: {name}, age: {age}
+    </li>
+  );
+
+  const petsUI = petsData.map(({ name, age }, index) => (
+    <li key={index} className="list-group-item">
+      Name: {name}, age: {age}
+    </li>
+  ));
+
+  //Ejercicio 2
   return (
-    <div className="form-group col-4 m-4 ">
-      <label className="text-black" htmlFor="NUMBER">
-        Card Number...
-      </label>
-      <input
-        type="text"
-        className="form-control"
-        id="NUMBER"
-        placeholder="Ej. XXXX-XXXX-XXXX-XXXX"
-        value={NUMBER}
-        onChange={({ target: { value } }) => setNUMBER(value)}
-      />
-      <label className="text-black" htmlFor="NAME">
-        Name...
-      </label>
-      <input
-        type="text"
-        className="form-control"
-        id="NAME"
-        placeholder="Ej. Mario Andrade"
-        value={NAME}
-        onChange={({ target: { value } }) => setNAME(value)}
-      />
-      <label className="text-black" htmlFor="VALID_THRU">
-        VALID_THRU
-      </label>
-      <input
-        type="date"
-        className="form-control"
-        id="VALID_THRU"
-        placeholder="VALID_THRU"
-        value={VALID_THRU}
-        onChange={({ target: { value } }) => setVALID_THRU(value)}
-      />
-      <label className="text-black" htmlFor="CVC">
-        CVC
-      </label>
-      <input
-        type="text"
-        className="form-control"
-        id="CVC"
-        placeholder="Ej. 123"
-        value={CVC}
-        onChange={({ target: { value } }) => setCVC(value)}
-      />
-      <div className="w-400 h-200 bg-dark m-4 d-flex">
-        <div className="card-body ">
-          <p></p>
+    <div className="container">
+      <div className="row justify-content-center">
+        <div className="col">
+          <div className="card" style={{ width: "18rem" }}>
+            <div className="card-header">Pets</div>
+            <ul className="list-group list-group-flush">
+              {petsData.map(buildLIPets)}
+            </ul>
+            <div className="card-header">Pets</div>
+            <ul className="list-group list-group-flush">{petsUI}</ul>
+          </div>
         </div>
       </div>
     </div>
