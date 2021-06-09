@@ -51,26 +51,51 @@ import React, { useState } from "react";
 //   );
 // }
 
-const petsData = [
-  {
-    name: "Sr. Peabody",
-    age: "5",
-  },
-  {
-    name: "Misifu",
-    age: "1",
-  },
-  {
-    name: "Solovino",
-    age: "10",
-  },
-  {
-    name: "Nefermishi",
-    age: "5",
-  },
-];
+// const petsData = [
+//   {
+//     name: "Sr. Peabody",
+//     age: "5",
+//   },
+//   {
+//     name: "Misifu",
+//     age: "1",
+//   },
+//   {
+//     name: "Solovino",
+//     age: "10",
+//   },
+//   {
+//     name: "Nefermishi",
+//     age: "5",
+//   },
+// ];
+
+const petsData = {
+  dogs: [
+    {
+      name: "Sr. Peabody",
+      age: "5",
+    },
+    {
+      name: "Solovino",
+      age: "10",
+    },
+  ],
+  cats: [
+    {
+      name: "Misifu",
+      age: "1",
+    },
+    {
+      name: "Nefermishi",
+      age: "5",
+    },
+  ],
+};
 
 export default function Exercises() {
+  const a = Object.keys(petsData);
+
   const buildLIPets = ({ name, age }, index) => (
     <li key={index} className="list-group-item">
       Name: {name}, age: {age}
